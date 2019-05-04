@@ -1,0 +1,10 @@
+[database]
+    host = "localhost"
+    port = 5432
+    dbName = "postgres"
+    user = "postgres"
+    pass = "postgres"
+
+[slack]
+    baseUrl = "https://slack.com/api"
+    token = "foobarbaz"
