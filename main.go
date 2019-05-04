@@ -10,4 +10,5 @@ func main() {
 	fmt.Println(Err)
 	fmt.Println(Conf.DataBase.Host)
 	fmt.Println(Conf.Slack.Token)
+	fmt.Println(Conf.Env.GoEnv)
 }
