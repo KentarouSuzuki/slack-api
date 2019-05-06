@@ -2,13 +2,12 @@ package main
 
 import (
 	"fmt"
-	"github.com/KentarouSuzuki/slack-member/config"
+	"github.com/KentarouSuzuki/slack-api/infrastructure/web_api"
 )
 
 func main() {
-	Conf, Err := config.Get()
-	fmt.Println(Err)
-	fmt.Println(Conf.DataBase.Host)
-	fmt.Println(Conf.Slack.Token)
-	fmt.Println(Conf.Env.GoEnv)
+	slack := webApi.NewSlackObject()
+
+	url := slack.MakeURL("list", "users")
+	fmt.Println(slack.Send("GET", url, ""))
 }

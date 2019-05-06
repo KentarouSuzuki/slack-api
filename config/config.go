@@ -24,6 +24,7 @@ type DataBaseConf struct {
 }
 
 type SlackConf struct {
+	BaseUrl	string
 	Token	string
 }
 
