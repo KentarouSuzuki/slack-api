@@ -2,12 +2,12 @@ package main
 
 import (
 	"fmt"
-	"github.com/KentarouSuzuki/slack-api/infrastructure/web_api"
+	"github.com/KentarouSuzuki/slack-api/interface/slack"
 )
 
 func main() {
-	slack := webApi.NewSlackObject()
-
-	url := slack.MakeURL("list", "users")
-	fmt.Println(slack.Send("GET", url, ""))
+	users := slack.FetchUsers()
+	for _, user := range users {
+		fmt.Println(user.Name)
+	}
 }

@@ -1,15 +1,15 @@
 package webApi
 
 import (
-	"strings"
+	"github.com/KentarouSuzuki/slack-api/config"
 	"io/ioutil"
 	"net/http"
-	"github.com/KentarouSuzuki/slack-api/config"
+	"strings"
 )
 
 type Slack struct {
-	BaseUrl	string
-	Token	string
+	BaseUrl string
+	Token   string
 }
 
 func (slack Slack) MakeURL(method string, objects ...string) string {
@@ -17,17 +17,17 @@ func (slack Slack) MakeURL(method string, objects ...string) string {
 	return url
 }
 
-func (slack Slack) Send(method string, url string, body string) string {
+func (slack Slack) Send(method string, url string, body string) []byte {
 	client := &http.Client{}
 
 	req, _ := http.NewRequest(method, url, strings.NewReader(body))
 	res, _ := client.Do(req)
 
 	byteArr, _ := ioutil.ReadAll(res.Body)
-	return string(byteArr)
+	return byteArr
 }
 
-func NewSlackObject() Slack{
+func NewSlackObject() Slack {
 	conf, _ := config.Get()
 	return Slack{BaseUrl: conf.Slack.BaseUrl, Token: conf.Slack.Token}
 }
