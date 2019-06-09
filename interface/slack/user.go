@@ -6,7 +6,7 @@ import (
 	"log"
 )
 
-type APIResponse struct {
+type UserResponse struct {
 	Ok      bool
 	Members []User
 }
@@ -36,7 +36,7 @@ func FetchUsers() []User {
 	slack := webApi.NewSlackObject()
 	url := slack.MakeURL("list", "users")
 
-	var users APIResponse
+	var users UserResponse
 	jsonb := slack.Send("GET", url, "")
 	if err := json.Unmarshal(jsonb, &users); err != nil {
 		log.Fatal(err)

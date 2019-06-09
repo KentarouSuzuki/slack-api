@@ -10,4 +10,9 @@ func main() {
 	for _, user := range users {
 		fmt.Println(user.Name)
 	}
+
+	userGroups := slack.FetchUserGroups()
+	for _, userGroup := range userGroups {
+		fmt.Println(userGroup.Name)
+	}
 }
